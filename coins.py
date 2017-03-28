@@ -117,15 +117,15 @@ if __name__ == "__main__":
             lot.save()
 
     total_count = Lot.select().count()
-    with_year_count = Lot.select().where(Lot.year != 0).count()
+    without_year_count = Lot.select().where(Lot.year == 0).count()
     pre_2000_count = Lot.select().where(Lot.year < 2000).count()
 
     print("Total count: {}".format(total_count))
     if total_count > 0:
         print(
-            "With year: {with_year} ({percentage:.2f}% of all)".format(
-                with_year=with_year_count,
-                percentage=(100 * with_year_count / total_count)
+            "Without year: {without_year} ({percentage:.2f}% of all)".format(
+                without_year=without_year_count,
+                percentage=(100 * without_year_count / total_count)
             )
         )
         print(
