@@ -21,15 +21,14 @@ class Lot(peewee.Model):
         self.description = resp.get("description", "")
 
     def guess_year(self):
-        title_good, title_year = guess.year(self.title)
-        description_good, description_year = guess.year(self.description)
-        if title_good and title_year is not None:
-            self.year = int(title_year)
-        elif title_year is not None:
-            self.year = int(title_year)
-        elif description_good and description_year is not None:
-            self.year = int(description_year)
-        elif description_year is not None:
-            self.year = int(description_year)
-        else:
-            self.year = 0
+        title_year = guess.year(self.title)
+        if title_year is not None:
+            self.year = title_year
+            return
+
+        description_year = guess.year(self.description)
+        if description_year is not None:
+            self.year = description_year
+            return
+
+        self.year = 0
