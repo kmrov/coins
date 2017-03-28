@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     total_count = Lot.select().count()
     with_year_count = Lot.select().where(Lot.year != 0).count()
-    post_2000_count = Lot.select().where(Lot.year >= 2000).count()
+    pre_2000_count = Lot.select().where(Lot.year < 2000).count()
 
     print("Total count: {}".format(total_count))
     if total_count > 0:
@@ -129,9 +129,9 @@ if __name__ == "__main__":
             )
         )
         print(
-            "Post-2000: {post_2000} ({percentage:.2f}% of all"
+            "Pre-2000: {pre_2000} ({percentage:.2f}% of all"
             " with year)".format(
-                post_2000=post_2000_count,
-                percentage=(100 * post_2000_count / total_count)
+                pre_2000=pre_2000_count,
+                percentage=(100 * pre_2000_count / total_count)
             )
         )
