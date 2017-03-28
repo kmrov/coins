@@ -1,0 +1,16 @@
+import os.path
+
+# Путь к приложению и к базе данных
+DIR = os.path.dirname(os.path.abspath(__file__))
+DB = os.path.join(DIR, "base.db")
+
+# Адрес категории
+CATEGORY_URL = "<YOUR CATEGORY URL>"
+
+# Адрес и параметры API
+API_URL = "<YOUR API URL>"
+SECRET = "<YOUR SECRET>"
+KEY = "<YOUR KEY>"
+
+# Количество процессов для обработки лотов
+PROCESS_WORKERS = 4
