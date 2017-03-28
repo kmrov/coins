@@ -8,7 +8,7 @@ db = peewee.SqliteDatabase(DB)
 
 
 class Lot(peewee.Model):
-    avito_id = peewee.IntegerField(unique=True)
+    a_id = peewee.IntegerField(unique=True)
     title = peewee.CharField()
     description = peewee.TextField(null=True)
     year = peewee.IntegerField(null=True)
@@ -17,7 +17,7 @@ class Lot(peewee.Model):
         database = db
 
     def get_description(self):
-        resp = api.get_item(self.avito_id).json()
+        resp = api.get_item(self.a_id).json()
         self.description = resp.get("description", "")
 
     def guess_year(self):

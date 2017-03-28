@@ -16,7 +16,7 @@ def get_lots(soup):
     elements = soup.select("a.description-title-link")
     return (
         {
-            "avito_id": int(el["id"]),
+            "a_id": int(el["id"]),
             "title": el.string.strip(),
         }
         for el in elements
@@ -57,7 +57,7 @@ def process_lot(lot):
         lot.get_description()
         time.sleep(random.uniform(0, 2))
     lot.guess_year()
-    print("Updated lot {} with year {}.".format(lot.avito_id, lot.year))
+    print("Updated lot {} with year {}.".format(lot.a_id, lot.year))
     return lot
 
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
             with db.atomic():
                 for lot in lots_dict:
                     Lot.get_or_create(
-                        defaults=lot, avito_id=lot["avito_id"]
+                        defaults=lot, a_id=lot["a_id"]
                     )
 
             print("Parsed page {}".format(page))
