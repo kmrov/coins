@@ -25,4 +25,4 @@ The script saves all lots to the SQLite3 database defined by `DB` parameter in t
 
 With optional `--continue` parameter, it assumes that lots are already fetched, just processing them where needed. 
 
-Finally, it outputs the full number of lots and percentages of lots with nonempty year and lots issued in 2000 or later.
+Finally, it outputs the full number of lots and percentages of lots with empty year and lots issued in 1999 or earlier.
