@@ -17,4 +17,8 @@ Then copy `config.py-EXAMPLE` to `config.py` and fill out the missing parameters
 
 Usage
 -----
-The script saves all lots to the SQLite3 database defined by `DB` parameter in the config file. By default, it fetches a list of lots, then processes them, getting the description and trying to guess the year of issue. With `--continue` parameter, it assumes that lots are already fetched, just processing them where needed. Finally, it outputs the full number of lots and percentages of lots with nonempty year and lots issued in 2000 or later.
+To run, just execute
+```
+python coins.py
+```
+The script saves all lots to the SQLite3 database defined by `DB` parameter in the config file. By default, it fetches a list of lots, then processes them, getting the description and trying to guess the year of issue. With optional `--continue` parameter, it assumes that lots are already fetched, just processing them where needed. Finally, it outputs the full number of lots and percentages of lots with nonempty year and lots issued in 2000 or later.
