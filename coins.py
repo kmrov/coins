@@ -24,10 +24,10 @@ def get_lots(soup):
 
 
 def get_pages_count(soup):
-    # ссылка на последнюю страницу
+    # getting last page link
     last_page_element = soup.select("a.pagination-page")[-1]
     href = last_page_element["href"]
-    # парсим адрес, затем его параметры, получаем значение параметра p
+    # getting its address, parsing query string, then getting p (page) param
     last_page_number = parse_qs(urlparse(href).query)["p"][0]
     return int(last_page_number)
 

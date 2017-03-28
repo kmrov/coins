@@ -16,7 +16,7 @@ def md5(string):
 
 
 def checksum(path, params):
-    ''' Контрольная сумма для данного пути и параметров. '''
+    ''' Checksum for given path and params. '''
     params = urlencode(params)
     return md5(
         md5(SECRET) +
@@ -27,8 +27,8 @@ def checksum(path, params):
 
 def api_request(api_version, path, params):
     '''
-    Синхронный запрос к API. Путь (path) указывается с / в начале.
-    Возвращает requests.Response.
+    Synchronous API request. Path should start with /.
+    Returns requests.Response.
     '''
     params = OrderedDict(sorted(params.items()))
     params["checksum"] = checksum(path, params)
@@ -40,8 +40,8 @@ def api_request(api_version, path, params):
 
 def get_item(id):
     '''
-    Получение лота с номером id.
-    Возвращает requests.Response.
+    Getting lot with given id.
+    Returns requests.Response.
     '''
     path = "/items/{}"
     return api_request(API_VERSIONS[path], path.format(id), {})
