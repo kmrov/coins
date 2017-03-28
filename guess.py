@@ -30,11 +30,11 @@ def get_year(match):
 
 
 def year(text):
-    match = SIMPLE_YEAR_RE.search(text)
-    if match is not None:
-        s_year = get_year(match)
-        if s_year is not None:
-            return s_year
+    for match in SIMPLE_YEAR_RE.finditer(text):
+        if match is not None:
+            s_year = get_year(match)
+            if s_year is not None:
+                return s_year
     return None
 
 
